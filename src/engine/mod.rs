@@ -7,7 +7,7 @@ pub struct Engine {
     board: Board,
     bag: Vec<PieceKind>,
     rng: ThreadRng,
-    cursor: Piece,
+    cursor: Option<Piece>,
 }
 
 impl Engine {
@@ -16,6 +16,7 @@ impl Engine {
             board: Board::blank(),
             bag: Vec::new(),
             rng: thread_rng(),
+            cursor: None,
         }
     }
 
@@ -23,6 +24,13 @@ impl Engine {
         debug_assert!(self.bag.is_empty());
         self.bag.extend_from_slice(PieceKind::ALL.as_slice());
         self.bag.shuffle(&mut self.rng);
+    }
+
+    fn place_cursor(&){
+        // Assert that the piece does not overlap filled cells
+        // debug_assert!()
+        
+        
     }
 }
 
